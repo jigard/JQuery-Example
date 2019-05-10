@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <title>Document</title>
+
+
+</head>
+
+<body>
+
+    <p class='p'>abcdef</p>
+    <p class='p'>abcdef</p>
+    <p class='click'>click</p>
+    <p class='dblclick'>dblclick</p>
+    <input type='text' class='text'>
+    <!-- <button class="show">Show</button>
+    <button class="hide">Hide</button> -->
+    <p id='p'>dblclick<bold>abcdef</bold>
+    </p>
+    <div></div>
+    <p>dblclick abcdef</p>
+
+    <button id='btn1'>btn1</button><br>
+    <button id='btn2'>btn2</button><br>
+
+
+    <ol>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ol>
+
+
+    <button>Click to fade out boxes</button><br><br>
+    <!-- <div id="div1" style="width:80px;height:80px;background-color:red;"></div><br>
+    <div id="div2" style="width:80px;height:80px;background-color:green;"></div><br>
+    <div id="div3" style="width:80px;height:80px;background-color:blue;"></div> -->
+    </script>
+    <style>
+        .imp {
+            font-weight: bold;
+            font-size: xx-large;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+
+    <div style="background:#98bf21;height:100px;width:100px;position:absolute;">
+        <script>
+            $(document).ready(function () {
+                $('button').click(function () {
+                    // $("p").addClass("blue imp");
+                    $("p").toggle("blue imp");
+                })
+            })
+            $(document).ready(function () {
+                $('#btn1').click(function () {
+                    alert('text' + $('#p').text())
+                }),
+                    $('#btn2').click(function () {
+                        alert('text' + $('#p').html())
+                    }),
+                    $('button').click(function () {
+                        alert('text' + $('#text').val())
+                    });
+            });
+            $(document).ready(function () {
+                $('#btn1').click(function () {
+                    $('#p').text('hello');
+                }),
+                    $('#btn2').click(function () {
+                        $('#p').html('<h1>hello</h1>');
+                    });
+            });
+            $(document).ready(function () {
+                $("#btn1").click(function () {
+                    $("p").prepend(" <b>Appended text</b>.");
+                });
+
+                $("#btn2").click(function () {
+                    $("ol").append("<li>Appended item</li>");
+                });
+            });
+
+            $(document).ready(function () {
+                $("this").click(function () {
+                    $(".p").hide();
+                });
+            });
+            $('body').notify({
+                message: 'Hello World',
+                type: 'danger'
+            });
+            $(document).ready(function () {
+                $('p.click').click(function () {
+                    $(this).hide();
+
+                }),
+                    // $('p.dblclick').dblclick(function () {
+                    //     $(this).hide();;
+
+                    // }),
+                    // $('p.dblclick').mouseenter(function () {
+                    //     $(this).hide();;
+
+                    // }),
+                    // $('p.dblclick').mouseleave(function () {
+                    //     $(this).hide();;
+
+                    // }),
+                    // $("input").focus(function () {
+                    //     $(this).css("background-color", "red");
+                    // });
+                    //     $('p').on('dblclick', function () {
+                    //         $(this).hide();
+                    //     })
+                    $('.show').click(function () {
+                        $('p').show();
+                    })
+                $('.hide').click(function () {
+                    $('p').hide(1000);
+                })
+                // $('button').click(function () {
+                //     $('p').toggle();
+                // })
+            })
+            // $(document).ready(function () {
+            //     $('button').click(function () {
+            //         $('#div1').fadeIn();
+            //         $('#div2').fadeIn(slow);
+            //         $('#div3').fadeIn(1000);
+            //     })
+            // });
+            // $(document).ready(function () {
+            //     $("button").click(function () {
+            //         $("#div1").fadeOut();
+            //         $("#div2").fadeOut("slow");
+            //         $("#div3").fadeOut(3000);
+            //     });
+            // });
+            $("button").click(function () {
+                $("div").animate({
+                    left: '250px',
+                    opacity: '0.5',
+                    height: '150px',
+                    width: '150px'
+                });
+            }); 
+        </script>
+</body>
+
+</html>
