@@ -16,6 +16,46 @@
             background-color: #e5eecc;
             border: solid 1px #c3c3c3;
         }
+
+        .imp {
+            font-weight: bold;
+            font-size: xx-large;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        #hwall {
+            height: 100px;
+            width: 300px;
+            border: 1px solid blue;
+            background-color: lightblue;
+        }
+
+        .ancestors * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+
+        .descendants * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+
+        .siblings * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
     </style>
     <script>
         //selector
@@ -63,6 +103,7 @@
                 $(this).hide();
             });
         });
+        //hide show
         $(document).ready(function () {
             $(".ehide").click(function () {
                 $("p.hs").hide();
@@ -71,6 +112,7 @@
                 $("p.hs").show();
             });
         });
+        //fade in,out
         $(document).ready(function () {
             $(".fin").click(function () {
                 $("#div1").fadeIn();
@@ -88,6 +130,7 @@
                 $("#div9").fadeToggle(3000);
             });
         });
+        //slide
         $(document).ready(function () {
             $("#flip").click(function () {
                 $("#panel").slideDown(5000);
@@ -102,6 +145,7 @@
                 $("#panel").stop();
             });
         });
+        //animate
         $(document).ready(function () {
             $(".ani").click(function () {
                 $("div").animate({ left: '250px' });
@@ -115,6 +159,7 @@
             });
             $(".chain").css("color", "red").slideUp(2000).slideDown(2000);
         });
+        //get
         $(document).ready(function () {
             $(".get1").click(function () {
                 alert("Text: " + $("#test").text());
@@ -129,6 +174,7 @@
                 alert($("#google").attr("href"));
             });
         });
+        //set
         $(document).ready(function () {
             $("#btn1").click(function () {
                 $("#test1").text("Hello world!");
@@ -140,6 +186,7 @@
                 $("#test3").val("Demo");
             });
         });
+        //append prepend
         $(document).ready(function () {
             $("#ap").click(function () {
                 $("ol").append(" <b>Appended text</b>.");
@@ -149,6 +196,7 @@
                 $("ol").prepend("<li>Prepended item</li>");
             });
         });
+        //remove
         $(document).ready(function () {
             $(".button1").click(function () {
                 $("#div1").remove();
@@ -157,6 +205,71 @@
                 $("#div1").empty();
             });
         });
+        //add class
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("h1, h2, p").addClass("blue");
+                $("div").addClass("imp");
+            });
+        });
+        //remove class
+        $(document).ready(function () {
+            $(".add").click(function () {
+                $("#div1").addClass("imp blue");
+            });
+            $(".remove").click(function () {
+                $("h1, h2, p").removeClass("blue");
+            });
+            $(".set").click(function () {
+                $("p").css("background-color", "green");
+            });
+        });
+        //dimensions
+        $(document).ready(function () {
+            $('.hw').click(function () {
+                let txt = '';
+                txt += "width" + $('#hwall').width() + "</br>";
+                txt += "height" + $('#hwall').height() + "</br>";
+                txt += "minwidth" + $('#hwall').innerwidth() + "</br>";
+                txt += "minheight" + $('#hwall').innerheight();
+                $('#hwall').html(txt);
+            })
+        })
+        //travesing ancestors
+        $(document).ready(function () {
+            // $('span').parent().css({ "color": "lightgreen", "border": "1px solid" });
+            $('span').parents('ul').css({ "color": "green", "border": "1px solid" });
+            // $('span').parentsUntil('div').css({ "color": "red", "border": "1px solid" });
+
+        })
+        //travesing deancestors
+        $(document).ready(function () {
+            // $('.div').children().css({ "color": "yellow", "border": "1px solid yellow " });
+            $('.div').find('span').css({ "color": "yellow", "border": "1px solid yellow" });
+        })
+        //siblings
+        $(document).ready(function () {
+            // $('.h2').siblings('span').css({ "color": "blue", "border": "1px solid blue" });
+            // $('.h2').next().css({ "color": "blue", "border": "1px solid blue" });
+            // $('.h2').nextAll().css({ "color": "blue", "border": "1px solid blue" });
+            // $('.h2').nextUntil().css({ "color": "blue", "border": "1px solid blue" });
+        })
+        $(document).ready(function () {
+            // $('.h2').prev().css({ "color": "blue", "border": "1px solid blue" });
+            // $('.h2').prevAll().css({ "color": "blue", "border": "1px solid blue" });
+            $('.h2').prevUntil().css({ "color": "blue", "border": "1px solid blue" });
+        })
+        //filtering
+        $(document).ready(function () {
+            // $('div').first('p').css("background-color", "blue");
+            $('div').last('p').css("background-color", "blue");
+            $("p").eq(2).css("background-color", "yellow");
+            $("p").filter('p.intro').css("background-color", "yellow");
+            // $("p").not('.intro').css("background-color", "yellow");
+
+        })
+
+
 
     </script>
 </head>
@@ -218,66 +331,130 @@
 
     <div id="flip1">Click to slide down panel</div>
     <div id="panel1">Hello world!</div>
-
-
-
     <hr>
-    <h1>Animates</h1>
-    <button class='ani'>Animation</button>
-    <div style="background:#98bf21;height:20px;width:20px;position:absolute;"></div><br>
+    <h1>Animates</descendantsh1>
+        <button class='descendants'>Animation</button>
+        <div style="badescendantsckground:#98bf21;height:20px;width:20px;position:absolute;"></div><br>
 
-    <br>
-    <p class="chain">jQuery is fun!!</p>
-    <button>Click me</button>
+        <br>
+        <p class="chain">jQuery is fun!!</p>
+        <button>Click me</button>
 
-    <hr>
-    <h1>Get</h1>
-    <p id="test">This is some <b>bold</b> text in a paragraph.</p>
+        <hr>
+        <h1>Get</h1>
+        <p id="test">This is some <b>bold</b> text in a paragraph.</p>
 
-    <button class='get1'>Show Text</button>
-    <button class='get2'>Show HTML</button>
-    <input type='text' class='get3'>
-    <p><a href="https://www.google.com" id="google">google.com</a></p>
-    <button class='get4'>Show href</button>
+        <button class='get1'>Show Text</button>
+        <button class='get2'>Show HTML</button>
+        <input type='text' class='get3'>
+        <p><a href="https://www.google.com" id="google">google.com</a></p>
+        <button class='get4'>Show href</button>
 
-    <hr>
-    <h1>Set</h1>
+        <hr>
+        <h1>Set</h1>
 
 
-    <p id="test1">This is a paragraph.</p>
-    <p id="test2">This is another paragraph.</p>
+        <p id="test1">This is a paragraph.</p>
+        <p id="test2">This is another paragraph.</p>
 
-    <p>Input field: <input type="text" id="test3" value="Mickey Mouse"></p>
+        <p>Input field: <input type="text" id="test3" value="Mickey Mouse"></p>
 
-    <button id="btn1">Set Text</button>
-    <button id="btn2">Set HTML</button>
-    <button id="btn3">Set Value</button>
+        <button id="btn1">Set Text</button>
+        <button id="btn2">Set HTML</button>
+        <button id="btn3">Set Value</button>
 
-    <hr>
-    <h1>Add</h1>
+        <hr>
+        <h1>Add</h1>
 
-    <ol>
-        <li>List item 1</li>
-        <li>List item 2</li>
-        <li>List item 3</li>
-    </ol>
+        <ol>
+            <li>List item 1</li>
+            <li>List item 2</li>intro
+            <li>List item 3</li>
+        </ol>
 
-    <button id="ap">Append text</button>
-    <button id="pe">Prepend list item</button>
+        <button id="ap">Append text</button>
+        <button id="pe">Prepend list item</button>
 
-    <hr>
-    <h1>Remove</h1>
-    <div id="div1" style="height:100px;width:300px;border:1px solid black;background-color:yellow;">
+        <hr>
+        <h1>Remove</h1>
+        <div id="div1" style="height:100px;width:300px;border:1px solid black;background-color:yellow;">
 
-        This is some text in the div.
-        <p>This is a paragraph in the div.</p>
-        <p>This is another paragraph in the div.</p>
+            This is some text in the div.
+            <p>This is a paragraph in the div.</p>
+            <p>This is another paragraph in the div.</p>
 
-    </div>
-    <br>
+        </div>
+        <br>
 
-    <button class='button1'>Remove div element</button>
-    <button class='button2'>Remove content element</button>
+        <button class='button1'>Remove div element</button>
+        <button class='button2'>Remove content element</button>
+
+        <div id="div1">This is some text.</div>
+        <div id="div2">This is some text.</div>
+        <hr>
+        <h1>CSS</h1>
+        <button class='add'>Add </button>
+
+        <p class="blue">This is a paragraph.</p>
+        <p>This is another paragraph.</p>
+
+        <button class='remove'>Remove</button>
+
+        <p style="background-color:#ff0000">This is a paragraph.</p>
+
+
+        <button class='set'>Set background-color of p</button>
+
+        <div id="hwall"></div>
+        <button class='hw'>Display dimensions of div</button>
+
+        <hr>
+        <h1>Travesing</h1>
+        ancestors
+        <div class="ancestors">
+            <div style="width:500px;">div (great-grandparent)
+                <ul>ul (grandparent)
+                    <li>li (direct parent)
+                        <span>span</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        descendants
+        <div class="descendants div" style="width:500px;">div (current element)
+            <p>p (child)
+                <span>span (grandchild)</span>
+                <span>span (grandchild)</span>
+                <span>span (grandchild)</span>
+            </p>
+        </div>
+        siblings
+        <div>div (parent)
+            <p>p</p>
+            <span>span</span>
+            <h2 class='h2'>h2</h2>
+            <h3>h3</h3>
+            <h4>h4</h4>
+            <h5>h5</h5>
+            <h6>h6</h6>
+            <p>p</p>
+        </div>
+
+        <div style="border: 1px solid black;">
+            <p>A paragraph in a div.</p>
+            <p>Another paragraph in a div.</p>
+        </div>
+        <br>
+
+        <div style="border: 1px solid black;">
+            <p>A paragraph in another div.</p>
+            <p>Another paragraph in another div.</p>
+        </div>
+        <br>intro
+        <p>A paragraph in another div.</p>
+        <p>Another paragraph in another div.</p>
+        <p class='intro'>A paragraph in a div.</p>
+        <p>Another paragraph in a div.</p>
 
 </body>
 
