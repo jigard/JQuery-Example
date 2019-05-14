@@ -207,7 +207,7 @@
         });
         //add class
         $(document).ready(function () {
-            $("button").click(function () {
+            $(".add").click(function () {
                 $("h1, h2, p").addClass("blue");
                 $("div").addClass("imp");
             });
@@ -242,7 +242,7 @@
             // $('span').parentsUntil('div').css({ "color": "red", "border": "1px solid" });
 
         })
-        //travesing deancestors
+        //travesing deancestorse
         $(document).ready(function () {
             // $('.div').children().css({ "color": "yellow", "border": "1px solid yellow " });
             $('.div').find('span').css({ "color": "yellow", "border": "1px solid yellow" });
@@ -266,8 +266,41 @@
             $("p").eq(2).css("background-color", "yellow");
             $("p").filter('p.intro').css("background-color", "yellow");
             // $("p").not('.intro').css("background-color", "yellow");
-
         })
+        $(document).ready(function () {
+            $("#aja").click(function () {
+                // $("#aj").load("demo_test.txt");
+                $("#aj").load("demo_test.txt #p1");
+            });
+        });
+        $(document).ready(function () {
+            $('#check').click(function () {
+                $('#div2').load('demo_test.txt', function (responseTxt, statusTxt, xhr) {
+                    if (statusTxt == 'success')
+                        alert('success');
+                    if (statusTxt == 'error')
+                        alert('error', +xhr.status + 'and' + xhr.statusText);
+                })
+            })
+        });
+        $(docuemnt).ready(function () {
+            $('#get').click(function () {
+                $.get('demo_test.html', function (data, status) {
+                    alert('data:' + data + 'status' + status);
+                })
+            });
+            $("#post").click(function () {
+                $.post("demo_test_post.html",
+                    {
+                        name: "demo",
+                        city: "us"
+                    },
+                    function (data, status) {
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+            });
+        });
+
 
 
 
@@ -334,7 +367,7 @@
     <hr>
     <h1>Animates</descendantsh1>
         <button class='descendants'>Animation</button>
-        <div style="badescendantsckground:#98bf21;height:20px;width:20px;position:absolute;"></div><br>
+        <div style="background:#98bf21;height:20px;width:20px;position:absolute;"></div><br>
 
         <br>
         <p class="chain">jQuery is fun!!</p>
@@ -347,7 +380,7 @@
         <button class='get1'>Show Text</button>
         <button class='get2'>Show HTML</button>
         <input type='text' class='get3'>
-        <p><a href="https://www.google.com" id="google">google.com</a></p>
+        <p><a hrefnt="https://www.google.com" id="google">google.com</a></p>
         <button class='get4'>Show href</button>
 
         <hr>
@@ -455,6 +488,24 @@
         <p>Another paragraph in another div.</p>
         <p class='intro'>A paragraph in a div.</p>
         <p>Another paragraph in a div.</p>
+
+        <hr>
+        <h1>jquery ajax</h1>
+        <div id="aj">
+            <h2>Let jQuery AJAX Change This Text</h2>
+        </div>
+        <button id='aja'>Get External Content</button>
+
+
+
+        <div id="div1">
+            <h2 id='div2'>Let jQuery AJAX Change This Text</h2>
+        </div>
+        <button id='check'>Get External Content</button>
+
+        <button id='get'>get data</button>
+        <button id='post'>post data</button>
+
 
 </body>
 
