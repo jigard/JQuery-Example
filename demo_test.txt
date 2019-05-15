@@ -1,2 +1,0 @@
-hello this is demo
-<p id='p1'>demo of ajax</p>

@@ -8,6 +8,252 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <title>Document</title>
+    <script>
+        //selector
+        $(document).ready(function () {
+            $(".hide").click(function () {
+                $("p").hide();
+            });
+            $('.btns').click(function () {
+                $('.phideclass').hide();
+            })
+            $('.btns').click(function () {
+                $('.phideid').hide();
+            })
+
+            //events
+
+            $(".oclk").click(function () {
+                $(this).hide();
+            });
+            $(".dbclk").click(function () {
+                $(this).hide();
+            });
+            // $(".menter").mouseenter(function () {
+            //     alert("You entered p1!");
+            // });
+            // $(".mleave").mouseleave(function () {
+            //     alert("You leaved p1!");
+            // });
+            // $(".mdown").mousedown(function () {
+            //     alert("Mouse down over p1!");
+            // });
+            // $(".mup").mousedown(function () {
+            //     alert("Mouse up over p1!");
+            // });
+            // $(".mhover").hover(function () {
+            //     alert("You entered p1!");
+            // });
+            $(".infocus").focus(function () {
+                $(this).css("background-color", "red");
+            });
+            $(".inblur").focus(function () {
+                $(this).css("background-color", "blue");
+            });
+            $(".onm").on("click", function () {
+                $(this).hide();
+            });
+
+            //hide show
+
+            $(".ehide").click(function () {
+                $("p.hs").hide();
+            });
+            $(".eshow").click(function () {
+                $("p.hs").show();
+            });
+
+            //fade in,out
+
+            $(".fin").click(function () {
+                $("#div1").fadeIn();
+                $("#div2").fadeIn("slow");
+                $("#div3").fadeIn(3000);
+            });
+            $(".fout").click(function () {
+                $("#div4").fadeOut();
+                $("#div5").fadeOut("slow");
+                $("#div6").fadeOut(3000);
+            });
+            $(".ftogle").click(function () {
+                $("#div7").fadeToggle();
+                $("#div8").fadeToggle("slow");
+                $("#div9").fadeToggle(3000);
+            });
+
+            //slide
+
+            $("#flip").click(function () {
+                $("#panel").slideDown(5000);
+            });
+            $("#flip").click(function () {
+                $("#panel").slideUp("slow");
+            });
+            $("#flip1").click(function () {
+                $("#panel1").slideToggle("slow");
+            });
+            $("#stop").click(function () {
+                $("#panel").stop();
+            });
+
+            //animate
+
+            $(".ani").click(function () {
+                $("div").animate({ left: '250px' });
+            });
+            $(".ani").click(function () {
+                var div = $("div");
+                div.animate({ height: '300px', opacity: '0.4' }, "slow");
+                div.animate({ width: '300px', opacity: '0.8' }, "slow");
+                div.animate({ height: '100px', opacity: '0.4' }, "slow");
+                div.animate({ width: '100px', opacity: '0.8' }, "slow");
+            });
+            $(".chain").css("color", "red").slideUp(2000).slideDown(2000);
+
+            //get
+
+            $(".get1").click(function () {
+                alert("Text: " + $("#test").text());
+            });
+            $(".get2").click(function () {
+                alert("HTML: " + $("#test").html());
+            });
+            $(".get3").click(function () {
+                alert("Value: " + $("#test").val());
+            });
+            $(".get4").click(function () {
+                alert($("#google").attr("href"));
+            });
+
+            //set
+
+            $("#btn1").click(function () {
+                $("#test1").text("Hello world!");
+            });
+            $("#btn2").click(function () {
+                $("#test2").html("<b>Hello world!</b>");
+            });
+            $("#btn3").click(function () {
+                $("#test3").val("Demo");
+            });
+
+            //append prepend
+
+            $("#ap").click(function () {
+                $("ol").append(" <b>Appended text</b>.");
+            });
+
+            $("#pe").click(function () {
+                $("ol").prepend("<li>Prepended item</li>");
+            });
+            //remove
+
+            $(".button1").click(function () {
+                $("#div1").remove();
+            });
+            $(".button2").click(function () {
+                $("#div1").empty();
+            });
+
+            //add class
+
+            $(".add").click(function () {
+                $("h1, h2, p").addClass("blue");
+                $("div").addClass("imp");
+            });
+
+            //remove class
+
+            $(".add").click(function () {
+                $("#div1").addClass("imp blue");
+            });
+            $(".remove").click(function () {
+                $("h1, h2, p").removeClass("blue");
+            });
+            $(".set").click(function () {
+                $("p").css("background-color", "green");
+            });
+
+            //dimensions
+
+            $('.hw').click(function () {
+                let txt = '';
+                txt += "width" + $('#hwall').width() + "</br>";
+                txt += "height" + $('#hwall').height() + "</br>";
+                txt += "minwidth" + $('#hwall').innerWidth() + "</br>";
+                txt += "minheight" + $('#hwall').innerHeight() + "</br>";
+                txt += "minwidth" + $('#hwall').outerWidth() + "</br>";
+                txt += "minheight" + $('#hwall').outerHeight();
+                $('#hwall').html(txt);
+            })
+
+            //travesing ancestors
+
+            // $('span').parent().css({ "color": "lightgreen", "border": "1px solid" });
+            $('span').parents('ul').css({ "color": "green", "border": "1px solid" });
+            // $('span').parentsUntil('div').css({ "color": "red", "border": "1px solid" });
+
+            //travesing deancestorse
+
+            // $('.div').children().css({ "color": "yellow", "border": "1px solid yellow " });
+            $('.div').find('span').css({ "color": "yellow", "border": "1px solid yellow" });
+
+            //siblings
+
+            // $('.h2').siblings('span').css({ "color": "blue", "border": "1px solid blue" });
+            // $('.h2').next().css({ "color": "blue", "border": "1px solid blue" });
+            // $('.h2').nextAll().css({ "color": "blue", "border": "1px solid blue" });
+            // $('.h2').nextUntil().css({ "color": "blue", "border": "1px solid blue" });
+
+
+            // $('.h2').prev().css({ "color": "blue", "border": "1px solid blue" });
+            // $('.h2').prevAll().css({ "color": "blue", "border": "1px solid blue" });
+            $('.h2').prevUntil().css({ "color": "blue", "border": "1px solid blue" });
+
+            //filtering
+
+            // $('div').first('p').css("background-color", "blue");
+            $('.clrdiv').last('p').css("background-color", "blue");
+            $("p").eq(2).css("background-color", "yellow");
+            $("p").filter('p.intro').css("background-color", "yellow");
+            // $("p").not('.intro').css("background-color", "yellow");
+
+
+            $("#ajload").click(function () {
+                $("#loaddata").load("demotext.html", function () {
+                    alert('success');
+                });
+                // $("#aj").load("demo_test.txt #p1");
+            });
+
+            $('#load').click(function () {
+                $('#dataload').load('demotext.html', function (responseTxt, statusTxt, xhr) {
+                    if (statusTxt == 'success')
+                        alert('success');
+                    if (statusTxt == 'error')
+                        alert('error', +xhr.status + 'and' + xhr.statusText);
+                });
+            });
+
+            $('#getdata').click(function () {
+                $.get("demotextget.php", function (data, status) {
+                    $('#change').html(data);
+                    alert('data:' + data + 'status' + status);
+                });
+            });
+
+            $("#postdata").click(function () {
+                $.post("demotextpost.php", {
+                    name: "demo",
+                    city: "us"
+                }, function (data, status) {
+                    $('#change').html(data);
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+            });
+        });
+
+    </script>
     <style>
         #panel,
         #flip {
@@ -57,254 +303,7 @@
             margin: 15px;
         }
     </style>
-    <script>
-        //selector
-        $(Document).ready(function () {
-            $("button").click(function () {
-                $("p").hide();
-            });
-            $('.btns').click(function () {
-                $('.phideclass').hide();
-            })
-            $('.btns').click(function () {
-                $('.phideid').hide();
-            })
-        })
-        //events
-        $(document).ready(function () {
-            $(".oclk").click(function () {
-                $(this).hide();
-            });
-            $(".dbclk").click(function () {
-                $(this).hide();
-            });
-            // $(".menter").mouseenter(function () {
-            //     alert("You entered p1!");
-            // });
-            // $(".mleave").mouseleave(function () {
-            //     alert("You leaved p1!");
-            // });
-            // $(".mdown").mousedown(function () {
-            //     alert("Mouse down over p1!");
-            // });
-            // $(".mup").mousedown(function () {
-            //     alert("Mouse up over p1!");
-            // });
-            // $(".mhover").hover(function () {
-            //     alert("You entered p1!");
-            // });
-            $(".infocus").focus(function () {
-                $(this).css("background-color", "red");
-            });
-            $(".inblur").focus(function () {
-                $(this).css("background-color", "blue");
-            });
-            $(".onm").on("click", function () {
-                $(this).hide();
-            });
-        });
-        //hide show
-        $(document).ready(function () {
-            $(".ehide").click(function () {
-                $("p.hs").hide();
-            });
-            $(".eshow").click(function () {
-                $("p.hs").show();
-            });
-        });
-        //fade in,out
-        $(document).ready(function () {
-            $(".fin").click(function () {
-                $("#div1").fadeIn();
-                $("#div2").fadeIn("slow");
-                $("#div3").fadeIn(3000);
-            });
-            $(".fout").click(function () {
-                $("#div4").fadeOut();
-                $("#div5").fadeOut("slow");
-                $("#div6").fadeOut(3000);
-            });
-            $(".ftogle").click(function () {
-                $("#div7").fadeToggle();
-                $("#div8").fadeToggle("slow");
-                $("#div9").fadeToggle(3000);
-            });
-        });
-        //slide
-        $(document).ready(function () {
-            $("#flip").click(function () {
-                $("#panel").slideDown(5000);
-            });
-            $("#flip").click(function () {
-                $("#panel").slideUp("slow");
-            });
-            $("#flip1").click(function () {
-                $("#panel1").slideToggle("slow");
-            });
-            $("#stop").click(function () {
-                $("#panel").stop();
-            });
-        });
-        //animate
-        $(document).ready(function () {
-            $(".ani").click(function () {
-                $("div").animate({ left: '250px' });
-            });
-            $(".ani").click(function () {
-                var div = $("div");
-                div.animate({ height: '300px', opacity: '0.4' }, "slow");
-                div.animate({ width: '300px', opacity: '0.8' }, "slow");
-                div.animate({ height: '100px', opacity: '0.4' }, "slow");
-                div.animate({ width: '100px', opacity: '0.8' }, "slow");
-            });
-            $(".chain").css("color", "red").slideUp(2000).slideDown(2000);
-        });
-        //get
-        $(document).ready(function () {
-            $(".get1").click(function () {
-                alert("Text: " + $("#test").text());
-            });
-            $(".get2").click(function () {
-                alert("HTML: " + $("#test").html());
-            });
-            $(".get3").click(function () {
-                alert("Value: " + $("#test").val());
-            });
-            $(".get4").click(function () {
-                alert($("#google").attr("href"));
-            });
-        });
-        //set
-        $(document).ready(function () {
-            $("#btn1").click(function () {
-                $("#test1").text("Hello world!");
-            });
-            $("#btn2").click(function () {
-                $("#test2").html("<b>Hello world!</b>");
-            });
-            $("#btn3").click(function () {
-                $("#test3").val("Demo");
-            });
-        });
-        //append prepend
-        $(document).ready(function () {
-            $("#ap").click(function () {
-                $("ol").append(" <b>Appended text</b>.");
-            });
 
-            $("#pe").click(function () {
-                $("ol").prepend("<li>Prepended item</li>");
-            });
-        });
-        //remove
-        $(document).ready(function () {
-            $(".button1").click(function () {
-                $("#div1").remove();
-            });
-            $(".button2").click(function () {
-                $("#div1").empty();
-            });
-        });
-        //add class
-        $(document).ready(function () {
-            $(".add").click(function () {
-                $("h1, h2, p").addClass("blue");
-                $("div").addClass("imp");
-            });
-        });
-        //remove class
-        $(document).ready(function () {
-            $(".add").click(function () {
-                $("#div1").addClass("imp blue");
-            });
-            $(".remove").click(function () {
-                $("h1, h2, p").removeClass("blue");
-            });
-            $(".set").click(function () {
-                $("p").css("background-color", "green");
-            });
-        });
-        //dimensions
-        $(document).ready(function () {
-            $('.hw').click(function () {
-                let txt = '';
-                txt += "width" + $('#hwall').width() + "</br>";
-                txt += "height" + $('#hwall').height() + "</br>";
-                txt += "minwidth" + $('#hwall').innerwidth() + "</br>";
-                txt += "minheight" + $('#hwall').innerheight();
-                $('#hwall').html(txt);
-            })
-        })
-        //travesing ancestors
-        $(document).ready(function () {
-            // $('span').parent().css({ "color": "lightgreen", "border": "1px solid" });
-            $('span').parents('ul').css({ "color": "green", "border": "1px solid" });
-            // $('span').parentsUntil('div').css({ "color": "red", "border": "1px solid" });
-
-        })
-        //travesing deancestorse
-        $(document).ready(function () {
-            // $('.div').children().css({ "color": "yellow", "border": "1px solid yellow " });
-            $('.div').find('span').css({ "color": "yellow", "border": "1px solid yellow" });
-        })
-        //siblings
-        $(document).ready(function () {
-            // $('.h2').siblings('span').css({ "color": "blue", "border": "1px solid blue" });
-            // $('.h2').next().css({ "color": "blue", "border": "1px solid blue" });
-            // $('.h2').nextAll().css({ "color": "blue", "border": "1px solid blue" });
-            // $('.h2').nextUntil().css({ "color": "blue", "border": "1px solid blue" });
-        })
-        $(document).ready(function () {
-            // $('.h2').prev().css({ "color": "blue", "border": "1px solid blue" });
-            // $('.h2').prevAll().css({ "color": "blue", "border": "1px solid blue" });
-            $('.h2').prevUntil().css({ "color": "blue", "border": "1px solid blue" });
-        })
-        //filtering
-        $(document).ready(function () {
-            // $('div').first('p').css("background-color", "blue");
-            $('div').last('p').css("background-color", "blue");
-            $("p").eq(2).css("background-color", "yellow");
-            $("p").filter('p.intro').css("background-color", "yellow");
-            // $("p").not('.intro').css("background-color", "yellow");
-        })
-        $(document).ready(function () {
-            $("#aja").click(function () {
-                // $("#aj").load("demo_test.txt");
-                $("#aj").load("demo_test.txt #p1");
-            });
-        });
-        $(document).ready(function () {
-            $('#check').click(function () {
-                $('#div2').load('demo_test.txt', function (responseTxt, statusTxt, xhr) {
-                    if (statusTxt == 'success')
-                        alert('success');
-                    if (statusTxt == 'error')
-                        alert('error', +xhr.status + 'and' + xhr.statusText);
-                })
-            })
-        });
-        $(docuemnt).ready(function () {
-            $('#get').click(function () {
-                $.get('demo_test.html', function (data, status) {
-                    alert('data:' + data + 'status' + status);
-                })
-            });
-            $("#post").click(function () {
-                $.post("demo_test_post.html",
-                    {
-                        name: "demo",
-                        city: "us"
-                    },
-                    function (data, status) {
-                        alert("Data: " + data + "\nStatus: " + status);
-                    });
-            });
-        });
-
-
-
-
-    </script>
 </head>
 
 
@@ -380,7 +379,7 @@
         <button class='get1'>Show Text</button>
         <button class='get2'>Show HTML</button>
         <input type='text' class='get3'>
-        <p><a hrefnt="https://www.google.com" id="google">google.com</a></p>
+        <p><a href="https://www.google.com" id="google">google.com</a></p>
         <button class='get4'>Show href</button>
 
         <hr>
@@ -479,7 +478,7 @@
         </div>
         <br>
 
-        <div style="border: 1px solid black;">
+        <div class='clrdiv' style="border: 1px solid black;">
             <p>A paragraph in another div.</p>
             <p>Another paragraph in another div.</p>
         </div>
@@ -491,20 +490,26 @@
 
         <hr>
         <h1>jquery ajax</h1>
-        <div id="aj">
+
+
+        <div id="loaddata">
+            <h2>jquery ajax change this text by load</h2>
+        </div>
+        <button id='ajload'>get content by load</button>
+
+
+
+        <div id="dataload">
             <h2>Let jQuery AJAX Change This Text</h2>
         </div>
-        <button id='aja'>Get External Content</button>
+        <button id='load'>Get External Content</button>
 
-
-
-        <div id="div1">
-            <h2 id='div2'>Let jQuery AJAX Change This Text</h2>
+        <div id="change">
+            <h2>change this text by get</h2>
         </div>
-        <button id='check'>Get External Content</button>
+        <button id='getdata'>get data</button>
+        <button id='postdata'>post data</button>
 
-        <button id='get'>get data</button>
-        <button id='post'>post data</button>
 
 
 </body>
