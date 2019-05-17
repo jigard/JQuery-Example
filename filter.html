@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <title>Document</title>
+
+    <style>
+        table {
+            border: 1px solid;
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        td,
+        th {
+            border: 1px solid;
+            text-align: left;
+            padding: 5px;
+        }
+    </style>
+    <script>
+
+        $(document).ready(function () {
+            $('#input').on('keyup', function () {
+                let name = $(this).val().toLowerCase();
+                $('#table tr').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(name) > -1)
+                })
+            })
+
+            $('#ulinput').on('keyup', function () {
+                let lilist = $(this).val().toLowerCase();
+                $('#ultable li').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(lilist) > -1)
+                })
+            })
+
+            $('#in').on('keyup', function () {
+                let divi = $(this).val().toLowerCase();
+                $('#divid *').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(divi) > -1)
+                })
+            })
+
+            $('#btn1').click(function () {
+                $('div').data('hello', 'hello jquery');
+            })
+            $('#btn2').click(function () {
+                alert($('div').data('hello'))
+            })
+            $("#btn").click(function () {
+                $("div").removeData("hello");
+                alert("Greeting is: " + $("div").data("hello"));
+            });
+
+            $("#btn3").click(function () {
+                $("li").each(function () {
+                    alert($(this).text())
+                });
+            });
+            $('#btn4').click(function () {
+                var x = $('p').get();
+                $('#d1').text(x.nodeName + ':' + x.innerHTML)
+            })
+            $("li").click(function () {
+                alert($(this).index());
+            });
+        })
+
+    </script>
+</head>
+
+<body>
+    <h2>Filter Table</h2>
+    <input type='text' id='input'>
+    <table>
+        <thead class='table-head'>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id='table'>
+            <tr>
+                <td>Jigar</td>
+                <td>Darji</td>
+                <td>JD@gmail.com</td>
+            </tr>
+            <tr>
+                <td>demo1</td>
+                <td>demo11</td>
+                <td>demo1@gmail.com</td>
+            </tr>
+            <tr>
+                <td>demo2</td>
+                <td>demo22</td>
+                <td>demo2@gmail.com</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>filter list</h2>
+    <input type='text' id='ulinput'>
+    <ul id='ultable'>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+        <li>five</li>
+    </ul>
+
+    <h2>filter anything</h2>
+    <input type='text' id='in'>
+    <div id='divid'>
+        <p>this is p tag</p>
+        <div>this is div tag</div>
+        <button>this is button tag</button>
+    </div><br>
+
+
+    <button id="btn1">Attach data to div element</button><br>
+    <button id="btn2">Get data attached to div element</button>
+
+    <div></div>
+
+    <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+        <li>five</li>
+    </ul>
+    <button id="btn3">each data</button>
+
+    <p>This is a paragraph</p>
+    <div id='d1'></div>
+    <button id='btn4'>Get DOM element</button>
+</body>
+
+</html>

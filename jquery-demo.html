@@ -218,7 +218,7 @@
             $("p").filter('p.intro').css("background-color", "yellow");
             // $("p").not('.intro').css("background-color", "yellow");
 
-
+            // var j = $.noConflict();
             $("#ajload").click(function () {
                 $("#loaddata").load("demotext.html", function () {
                     alert('success');
@@ -251,6 +251,10 @@
                     alert("Data: " + data + "\nStatus: " + status);
                 });
             });
+            // var j = $.noConflict();
+            $('#con').click(function ($) {
+                $('#pid').text('this is noconflict');
+            })
         });
 
     </script>
@@ -510,7 +514,11 @@
         <button id='getdata'>get data</button>
         <button id='postdata'>post data</button>
 
-
+        <hr>
+        <h1>jquery misc</h1>
+        noconflict
+        <p id='pid'>this is demo</p>
+        <button id='con'>test</button>
 
 </body>
 
