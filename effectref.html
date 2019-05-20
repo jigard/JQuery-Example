@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.input1').blur(function () {
+                alert('blur');
+            });
+            $('.input2').change(function () {
+                alert('change');
+            });
+            $("h1, h2, p").click(function (event) {
+                alert(event.currentTarget === this);
+            });
+            $("p").each(function (i) {
+                $(this).on("click", { x: i }, function (event) {
+                    alert("The " + $(this).index() + ". paragraph has data: " + event.data.x);
+                });
+            });
+            $("div").on("click", "button", function (event) {
+                $(event.delegateTarget).css("background-color", "pink");
+            });
+            $("a").click(function (event) {
+                event.preventDefault();
+                alert("Was preventDefault() called: " + event.isDefaultPrevented());
+            });
+            $('div').click(function (event) {
+                event.stopImmediatePropagation();
+                alert('stopImmediatePropagation');
+            })
+            $('.div4').click(function (event) {
+                event.stopPropagation();
+                alert('stoppropagation');
+                event.isPropagationStopped()
+            })
+            $("p").on("custom.someNamespace", function (event) {
+                alert(event.namespace);
+            });
+            $("p").click(function (event) {
+                $(this).trigger("custom.someNamespace");
+            });
+            $("button").click(function () {
+                $("p").off("custom.someNamespace");
+            });
+            $(document).mousemove(function (event) {
+                $('span').text('X: ' + event.pageX + 'y: ' + event.pageY);
+            })
+            $('div,p').mouseenter(function (event) {
+                $('#msg').html('value: ' + event.relatedTarget.nodeName);
+            })
+            $('.btn5').click(function () {
+                return 'demo';
+            })
+            $('.btn5').click(function (event) {
+                $('#p').html(event.result);
+            })
+            $('.div6').click(function (event) {
+                alert('exec 1');
+                event.stopImmediatePropagation();
+            })
+            $('.div6').click(function (event) {
+                alert('exec 2');
+            })
+            $("span").click(function (event) {
+                event.stopPropagation();
+                alert("The span element was clicked.");
+            });
+            $("p").click(function (event) {
+                alert("The p element was clicked.");
+            });
+            $("div").click(function () {
+                alert("The div element was clicked.");
+            });
+            $('p button h1').click(function (event) {
+                // $('.c2').html('trigger' + event.target.nodeName);
+                $('.c2').text(event.timeStamp);
+            })
+            $(".btn7").click(function (event) {
+                $(".sp1").text(event.timeStamp);
+            });
+            $('.input3').keydown(function (event) {
+                $('.div0').html(event.which)
+            })
+            $(".div9").focusin(function () {
+                $(this).css("background-color", "#green");
+            });
+            $(".div9").focusout(function () {
+                $(this).css("background-color", "white");
+            });
+            $("p").hover(function () {
+                $(this).css("background-color", "yellow");
+            }, function () {
+                $(this).css("background-color", "pink");
+            });
+            var i = 0;
+            $('.keyin').keypress(function () {
+                $('.key').html(i += 1);
+            })
+            $('div').mouseUp(function () {
+                $(this).after('<p>key press</p>');
+            })
+            $('div').mouseUp(function () {
+                $(this).after('<p>key release</p>');
+            })
+            $("p").one("click", function () {
+                $(this).animate({ fontSize: "+=6px" });
+            });
+
+        })
+    </script>
+</head>
+
+<body>
+    <input type="text" class='input1'>
+    <input type="text" class='input2'>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+    <p>This is another paragraph.</p>
+    <div style="background-color:yellow">
+        <p>Click the button to change the background color of this div.</p>
+        <button>Click me!</button>
+    </div>
+    <a href="https://www.google.com/">google</a>
+
+
+    <p id='p'>this is</p>
+    <button class='btn5'>button</button>
+
+    <div style="height:50px;width:150px;padding:5px;border:1px solid blue;background-color:blue;">Click on this
+        div element.</div>
+
+    <div class='div4' style="height:50px;width:150px;padding:5px;border:1px solid;background-color:lightgreen;">
+        Click on
+        this
+        div element.</div>
+
+    <button>Remove namespace</button>
+    <span></span>
+
+    <!-- 
+    <div style="height:50px;border:solid">This is a div element
+        <p style="background-color:yellowgreen">This is a paragraph</p>
+    </div><br>
+    <div id="msg"> -->
+
+    <div clas='div6' style="height:50px;width:150px;padding:5px;border:1px solid blue;background-color:blue;">Click
+        on this
+        div element.</div>
+
+    <div style='heigth:100px;width:200px;margin:5px;background-color: tomato;border:1px solid blue'>
+        <p style='background-color: yellow'>this is p tag</p>
+        <span style='background-color: yellow'>this is span tag</span>
+    </div>
+    <div class='c2' style="color:blue;"></div>
+    <span class='sp1'></span>
+    <button class='btn7'>submit</button>
+
+    <input type='text' class='input3'>
+    <div class='div0'></div>
+
+
+    <div style="border: 1px solid black;padding:10px;">
+        First name: <input type="text"><br>
+        Last name: <input type="text">
+    </div>
+    <p>this is p</p>
+
+    <input type='text' class='keyin'>
+    <p class='key'></p>
+
+
+    <div>Press down and release the mouse button over this div element.</div>
+
+</body>
+
+</html>

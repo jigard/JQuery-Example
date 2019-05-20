@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //all element
+            $("*").css('background-color', 'white');
+            //by id
+            $('#i1').css('color', 'red');
+            //by class or multiple class
+            $('.c1,.intro').css('color', 'green');
+            //by elements or multiple elements
+            $('h3,h5').css('color', 'red');
+            //first p
+            $('p:first').css('color', 'lightgreen');
+            //last p
+            $('p:last').css('color', 'lightgreen');
+            //tr odd
+            $('tr:odd').css('background-color', 'yellow');
+            //tr even
+            $("tr:even").css("background-color", "yellow");
+            //p first child
+            $("p:first-child").css("background-color", "lightblue");
+            //p first type child
+            $("p:first-of-child").css("background-color", "lightblue");
+            //p last child
+            $("p:last-child").css("background-color", "lightblue");
+            //p last type child
+            $("p:last-of-child").css("background-color", "lightblue");
+            //p last  child 2
+            $("p:nth-last-child(2)").css("background-color", "lightblue");
+            //p direct child
+            $("div p").css("background-color", "blue");
+            $("div ~ p").css("background-color", "yellow");
+            $("p:eq(1)").css("background-color", "yellow");
+
+
+        })
+        $(document).ready(function () {
+            function aniDiv() {
+                $("div:eq(0)").animate({ width: "50%" }, "slow");
+                $("div:eq(0)").animate({ width: "100%" }, "slow", aniDiv);
+            }
+            aniDiv();
+            $(".btn1").click(function () {
+                $(":animated").css("background-color", "red");
+            });
+            $("input").focus();
+            $(":focus").css("background-color", "yellow");
+            $('p:contains(is)').css('background-color', 'green');
+            $("p:hidden").show(3500);
+            $("p:lang(it)").css("background-color", "yellow");
+            $("[id]").css("background-color", "green");
+            $("[id=choose]").css("background-color", "green");
+        });
+    </script>
+</head>
+
+<body>
+
+    <p class="intro">My name is abc.</p>
+    <h3>element.</h3>
+    <h5>element.</h5>
+    <p>I live in Duckburg.</p>
+    <div>
+        <p>p tag</p>
+    </div>
+
+    <div id='i1'>
+        <p>id</p>
+    </div>
+
+    <div class='c1'>
+        <p>class</p>
+    </div>
+
+    <table border="1">
+        <tr>
+            <th>title</th>
+            <th>desc</th>
+        </tr>
+        <tr>
+            <td>title1</td>
+            <td>desc1</td>
+        </tr>
+        <tr>
+            <td>title2</td>
+            <td>desc2</td>
+        </tr>
+    </table>
+
+    <p>This is a p element (will not be selected).</p>
+    <div style="border:1px solid black;padding:10px;">This is a div element.</div>
+    <p>This is a p element.</p>
+    <p>This is another p element.</p>
+
+    <button class="btn1">Change color of the animated element</button>
+
+    <input type="text">
+    <p style="display:none;">This is a hidden paragraph that is slowly shown.</p>
+    <p lang="it">lang!</p>
+
+    <ul id="choose">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+    </ul>
+
+</body>
+
+</html>

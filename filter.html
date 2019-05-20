@@ -69,6 +69,14 @@
             $("li").click(function () {
                 alert($(this).index());
             });
+
+            $("#btn5").click(function () {
+                var i;
+                var x = $("li").toArray()
+                for (i = 0; i < x.length; i++) {
+                    alert(x[i].innerHTML);
+                }
+            });
         })
 
     </script>
@@ -140,6 +148,9 @@
     <p>This is a paragraph</p>
     <div id='d1'></div>
     <button id='btn4'>Get DOM element</button>
+
+    <button id='btn5'>array</button>
+
 </body>
 
 </html>
